@@ -10,19 +10,19 @@ get_beast2_pkg_names()
 a data frame
 }
 \description{
-List all BEAST2 packages available and installed
+Will \link{stop} if there is no internet connection
 }
 \examples{
-  library(testthat)
+library(testthat)
 
-  if (is_beast2_installed()) {
-    df <- get_beast2_pkg_names()
-    expect_true("name" \%in\% names(df))
-    expect_true("installed_version" \%in\% names(df))
-    expect_true("latest_version" \%in\% names(df))
-    expect_true("dependencies" \%in\% names(df))
-    expect_true("description" \%in\% names(df))
-  }
+if (is_beast2_installed() && curl::has_internet()) {
+  df <- get_beast2_pkg_names()
+  expect_true("name" \%in\% names(df))
+  expect_true("installed_version" \%in\% names(df))
+  expect_true("latest_version" \%in\% names(df))
+  expect_true("dependencies" \%in\% names(df))
+  expect_true("description" \%in\% names(df))
+}
 }
 \author{
 Richèl J.C. Bilderbeek

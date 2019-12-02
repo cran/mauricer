@@ -29,8 +29,6 @@
 #'   }
 #' }
 #' @docType package
-#' @import beastier
 #' @name mauricer
+#' @import beastier
 NULL
-
-

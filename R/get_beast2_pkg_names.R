@@ -1,21 +1,26 @@
 #' List all BEAST2 packages available and installed
+#'
+#' Will \link{stop} if there is no internet connection
 #' @return a data frame
 #' @author Richèl J.C. Bilderbeek
 #' @examples
-#'   library(testthat)
+#' library(testthat)
 #'
-#'   if (is_beast2_installed()) {
-#'     df <- get_beast2_pkg_names()
-#'     expect_true("name" %in% names(df))
-#'     expect_true("installed_version" %in% names(df))
-#'     expect_true("latest_version" %in% names(df))
-#'     expect_true("dependencies" %in% names(df))
-#'     expect_true("description" %in% names(df))
-#'   }
+#' if (is_beast2_installed() && curl::has_internet()) {
+#'   df <- get_beast2_pkg_names()
+#'   expect_true("name" %in% names(df))
+#'   expect_true("installed_version" %in% names(df))
+#'   expect_true("latest_version" %in% names(df))
+#'   expect_true("dependencies" %in% names(df))
+#'   expect_true("description" %in% names(df))
+#' }
 #' @export
 get_beast2_pkg_names <- function() {
   if (!beastier::is_beast2_installed()) {
     stop("BEAST2 not installed. Tip: use 'beastier::install_beast2()'")
+  }
+  if (!curl::has_internet()) {
+    stop("No internet connection")
   }
   # java -cp beast.jar beast.util.PackageManager -list
   raw <- system2(
@@ -44,13 +49,4 @@ get_beast2_pkg_names <- function() {
     df[, col] <- stringr::str_trim(df[, col])
   }
   df
-}
-
-#' Obsolete function to list all BEAST2 packages available and installed.
-#' Use \link{get_beast2_pkg_names} instead
-#' @return a data frame
-#' @author Richèl J.C. Bilderbeek
-#' @export
-mrc_list <- function() {
-  stop("'mrc_list' is deprecated, use 'get_beast2_pkg_names' instead")
 }
