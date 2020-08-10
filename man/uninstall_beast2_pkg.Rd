@@ -4,10 +4,14 @@
 \alias{uninstall_beast2_pkg}
 \title{Uninstall a BEAST2 package}
 \usage{
-uninstall_beast2_pkg(name)
+uninstall_beast2_pkg(name, has_internet = curl::has_internet())
 }
 \arguments{
 \item{name}{the package's name}
+
+\item{has_internet}{boolean to indicate if the user has access to the
+internet. By default, this value equals the result
+of \code{curl::has_internet}}
 }
 \value{
 nothing. It does install the BEAST2 package
@@ -16,20 +20,8 @@ nothing. It does install the BEAST2 package
 Uninstall a BEAST2 package
 }
 \examples{
-library(testthat)
-
-# Only install a package on Travis, if BEAST2 is installed
-# and the package is not
-if (is_on_travis() &&
-  is_beast2_installed() &&
-  curl::has_internet() &&
-  !is_beast2_pkg_installed("Beasy")
-) {
-  install_beast2_pkg("Beasy")
-  expect_true(is_beast2_pkg_installed("Beasy"))
-
+\dontrun{
   uninstall_beast2_pkg("Beasy")
-  expect_false(is_beast2_pkg_installed("Beasy"))
 }
 }
 \author{

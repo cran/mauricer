@@ -2,12 +2,16 @@
 % Please edit documentation in R/is_beast2_pkg_installed.R
 \name{is_beast2_pkg_installed}
 \alias{is_beast2_pkg_installed}
-\title{Checks if a BEAST2 package is already installed.}
+\title{Is a BEAST2 package installed?}
 \usage{
-is_beast2_pkg_installed(name)
+is_beast2_pkg_installed(name, has_internet = curl::has_internet())
 }
 \arguments{
-\item{name}{BEAST2 package name}
+\item{name}{the package's name}
+
+\item{has_internet}{boolean to indicate if the user has access to the
+internet. By default, this value equals the result
+of \code{curl::has_internet}}
 }
 \value{
 \itemize{
@@ -17,19 +21,15 @@ is_beast2_pkg_installed(name)
 }
 }
 \description{
+Checks if a BEAST2 package is installed.
+}
+\details{
 To be able to check this, an internet connection is needed.
 Without an internet connection, \code{NULL} is returned.
 }
 \examples{
-library(testthat)
-
-if (is_beast2_installed() && curl::has_internet()) {
-  print(
-    paste(
-      "Is the Beasy BEAST2 package installed:",
-      is_beast2_pkg_installed("Beasy")
-    )
-  )
+\dontrun{
+  is_beast2_pkg_installed("Beasy")
 }
 }
 \seealso{
