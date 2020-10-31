@@ -4,10 +4,31 @@
 \alias{install_beast2_pkg}
 \title{Install a BEAST2 package}
 \usage{
-install_beast2_pkg(name)
+install_beast2_pkg(
+  name,
+  beast2_folder = beastier::get_default_beast2_folder(),
+  verbose = FALSE,
+  has_internet = curl::has_internet()
+)
 }
 \arguments{
 \item{name}{the package's name}
+
+\item{beast2_folder}{the folder where the BEAST2 is installed.
+Note that this is not the folder where the BEAST2 executable is installed:
+the BEAST2 executable is in a subfolder.
+Use \link[beastier]{get_default_beast2_folder}
+  to get the default BEAST2 folder.
+Use \link[beastier]{get_default_beast2_bin_path}
+  to get the full path to the default BEAST2 executable.
+Use \link[beastier]{get_default_beast2_jar_path}
+  to get the full path to the default BEAST2 jar file.}
+
+\item{verbose}{set to TRUE for extra output, as can be used in debugging}
+
+\item{has_internet}{boolean to indicate if the user has access to the
+internet. By default, this value equals the result
+of \code{curl::has_internet}}
 }
 \value{
 nothing. It does install the BEAST2 package

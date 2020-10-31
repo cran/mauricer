@@ -23,23 +23,33 @@
 #' }
 #' @export
 get_beast2_pkg_names <- function(
-  has_internet = curl::has_internet()
+  beast2_folder = beastier::get_default_beast2_folder(),
+  has_internet = curl::has_internet(),
+  verbose = FALSE
 ) {
-  if (!beastier::is_beast2_installed()) {
-    stop("BEAST2 not installed. Tip: use 'beastier::install_beast2()'")
-  }
   if (!has_internet) {
     stop("No internet connection")
   }
+  if (!beastier::is_beast2_installed(folder_name = beast2_folder)) {
+    stop("BEAST2 not installed. Tip: use 'beastier::install_beast2()'")
+  }
+  jar_file_path <- beastier::get_default_beast2_jar_path(
+    beast2_folder = beast2_folder
+  )
   # java -cp beast.jar beast.util.PackageManager -list
+  cmds <- c(
+    beastier::get_default_java_path(),
+    "-cp",
+    shQuote(jar_file_path),
+    "beast.util.PackageManager",
+    "-list"
+  )
+  if (verbose) {
+    message(paste0("Running command: '", paste(cmds, collapse = " "), "'"))
+  }
   raw <- system2(
-    command = beastier::get_default_java_path(),
-    args = c(
-      "-cp",
-      shQuote(beastier::get_default_beast2_jar_path()),
-      "beast.util.PackageManager",
-      "-list"
-    ),
+    command = cmds[1],
+    args = cmds[-1],
     stdout = TRUE
   )
   raw <- raw[c(-1, -2, -4)]

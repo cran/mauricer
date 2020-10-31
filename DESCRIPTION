@@ -1,7 +1,7 @@
 Package: mauricer
 Type: Package
 Title: Install 'BEAST2' Packages
-Version: 2.1
+Version: 2.3
 Author: Richèl J.C. Bilderbeek
 Maintainer: Richèl J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Description: 'BEAST2' (<https://www.beast2.org>) is a widely used
@@ -15,15 +15,15 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
-Depends: beastier
+Depends: beastier (>= 2.2.1)
 Imports: curl, stringr
 Suggests: beautier, knitr, rmarkdown, testit, testthat (>= 2.1.0)
 VignetteBuilder: knitr
-URL: https://docs.ropensci.org/mauricer,
-        https://github.com/ropensci/mauricer
+URL: https://docs.ropensci.org/mauricer/,
+        https://github.com/ropensci/mauricer/
 BugReports: https://github.com/ropensci/mauricer/issues
 SystemRequirements: BEAST2 (https://www.beast2.org/)
 NeedsCompilation: no
-Packaged: 2020-08-07 10:44:23 UTC; richel
+Packaged: 2020-10-31 16:20:41 UTC; richel
 Repository: CRAN
-Date/Publication: 2020-08-10 09:30:02 UTC
+Date/Publication: 2020-10-31 17:00:03 UTC
