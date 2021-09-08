@@ -19,6 +19,8 @@ is_beast2_ns_pkg_installed <- function(
   verbose = FALSE,
   beast2_folder = beastier::get_default_beast2_folder()
 ) {
+  # On GHA, the error section is never triggered,
+  # on Travis CI it is
   result <- FALSE
   tryCatch({
     result <- beastier::is_beast2_input_file(

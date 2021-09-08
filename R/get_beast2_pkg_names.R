@@ -31,7 +31,7 @@ get_beast2_pkg_names <- function(
     stop("No internet connection")
   }
   if (!beastier::is_beast2_installed(folder_name = beast2_folder)) {
-    stop("BEAST2 not installed. Tip: use 'beastier::install_beast2()'")
+    stop("BEAST2 not installed. Tip: use 'beastierinstall::install_beast2()'")
   }
   jar_file_path <- beastier::get_default_beast2_jar_path(
     beast2_folder = beast2_folder
@@ -48,7 +48,7 @@ get_beast2_pkg_names <- function(
     message(paste0("Running command: '", paste(cmds, collapse = " "), "'"))
   }
   raw <- system2(
-    command = cmds[1],
+    command = normalizePath(cmds[1]),
     args = cmds[-1],
     stdout = TRUE
   )

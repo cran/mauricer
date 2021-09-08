@@ -30,18 +30,3 @@ if (curl::has_internet() && beastier::is_beast2_installed()) {
   print(package_name)
 }
 
-## -----------------------------------------------------------------------------
-if (curl::has_internet() && beastier::is_beast2_installed()) {
-  install_beast2_pkg(package_name)
-}
-
-## -----------------------------------------------------------------------------
-if (curl::has_internet() && beastier::is_beast2_installed()) {
-  expect_true(is_beast2_pkg_installed(package_name))
-}
-
-## -----------------------------------------------------------------------------
-if (curl::has_internet() && beastier::is_beast2_installed()) {
-  uninstall_beast2_pkg(package_name)
-}
-
