@@ -1,4 +1,4 @@
-dbb5c72ded5d61cb640802e99e024c4e *DESCRIPTION
+5008d4016112a0e86da7a42d43faaa8f *DESCRIPTION
 d22c382e207cdcdaf586d03d0988fd48 *NAMESPACE
 8eb3b09fa66be2d66d76ff2cb37925ed *R/default_params_doc.R
 f8e8b1c8a207be9282c9aad3b55b548b *R/get_beast2_pkg_names.R
@@ -9,12 +9,12 @@ dda63b84fc179c32c7d17d690a6dd53f *R/get_paths.R
 21e125090a6b6a220f7d449000ac0ee7 *R/is_beast2_pkg_installed.R
 552b7bb5f6bfef7add0f01f2fdd6f188 *R/mauricer.R
 4ebbd6de62fcf6be858fa60068bf4259 *R/uninstall_beast2_pkg.R
-9f695c7614528a1a786dabe2e19ecd8a *build/vignette.rds
+48a5a7a76254afc8967e9eaeea37fc05 *build/vignette.rds
 604d69ff7d5954219736e01c41d18e48 *inst/CITATION
 c2c9b85a0967aa43465935459d017728 *inst/WORDLIST
 4466b3bb80fd45aabf343d03fd6ad965 *inst/doc/demo.R
 a3b380b0c6b0ef828aca13db5bc3a01b *inst/doc/demo.Rmd
-769930673861358e2973df9078ba50b5 *inst/doc/demo.html
+6c5ed3a00a9255958eea5a3f1448f703 *inst/doc/demo.html
 d37753c82288c23dda0c95c496f50ef9 *inst/extdata/anthus_aco_sub.fas
 06d16968e24a50589d5143bd40c5dc01 *inst/extdata/anthus_nd2_sub.fas
 4ce27062dcd961771b12dd9adfcdd946 *inst/extdata/nested_sampling.xml

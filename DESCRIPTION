@@ -1,7 +1,7 @@
 Package: mauricer
 Type: Package
 Title: Work with 'BEAST2' Packages
-Version: 2.5.1
+Version: 2.5.2
 Author: Richèl J.C. Bilderbeek
 Maintainer: Richèl J.C. Bilderbeek <richel@richelbilderbeek.nl>
 Description: 'BEAST2' (<https://www.beast2.org>) is a widely used
@@ -24,6 +24,6 @@ URL: https://docs.ropensci.org/mauricer/ (website)
 BugReports: https://github.com/ropensci/mauricer/issues
 SystemRequirements: BEAST2 (https://www.beast2.org/)
 NeedsCompilation: no
-Packaged: 2021-09-08 09:28:43 UTC; richel
+Packaged: 2022-08-12 07:48:43 UTC; richel
 Repository: CRAN
-Date/Publication: 2021-09-08 10:00:05 UTC
+Date/Publication: 2022-08-12 08:10:02 UTC
