@@ -12,93 +12,107 @@
 
 <meta name="author" content="Richèl J.C. Bilderbeek" />
 
-<meta name="date" content="2022-08-12" />
+<meta name="date" content="2024-06-10" />
 
 <title>mauricer demo</title>
 
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
 
 
 
 <style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
 </style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {  }
+{ }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -107,13 +121,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -319,16 +340,17 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">mauricer demo</h1>
 <h4 class="author">Richèl J.C. Bilderbeek</h4>
-<h4 class="date">2022-08-12</h4>
+<h4 class="date">2024-06-10</h4>
 
 
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p><code>mauricer</code> is an R package to handle BEAST2 package management from R, similar to the BEAST2 package manager.</p>
-<div class="figure">
+<p><code>mauricer</code> is an R package to handle BEAST2 package
+management from R, similar to the BEAST2 package manager.</p>
+<div class="float">
 <img src="data:image/png;base64,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/dBDD92//n72uua2GiLav3//a6++9lTvU5/93GevueaaSy655M9//jMR9fT0fLnxy9PKpi3/l+WZTOatN9968cUXH9v02Ntvv51jhbUFWmlpaTab/dUvfyXPueoHq4ho7Lix7O3/vPA/x44eI6KfdPzk3XffnTBhwsSJE8eMGfPP3/nnSZMmzZ07t+/3fVOnTl2wcAER7X9j/73/du97771XVFQ0Y8YMvtiSMSXf+MY3rv3ra9/5yzv/fu+/9/f3s3RJsVOmTLnllluI6MU/vPj9732fiP5p2T9de+21eplTL5r6ce3jRPTgxgc3dm8kok/XfXrhwoWf+vtPbX58s+TPi4cffviGyhvm184/cPDAFVdc0d/f/0LfC0LQlVRMz1NUVHTvv937yiuvzJs/7wtf/MIFky9gfy0FsFFjxoz56U9+unXLVta9LP9OIYKswqR6/zCfM5e462i9ltd0BwcHslm6YPLkkuKSwcHBoqKi49mSksHjr58Y+3Zm5MCJkQWzzn/tdPad8ZddVXzsskmlxUXFpkUBmDpw4MDIyMiUKVMmTpz4wQ9+8LOf++xPOn5iu9Sll146Z84cInqq9ykievrpp5fULSkuLr6l5pYH7n+AiJ7Z/szrr71+09ybrr7m6iuvvHJa2bRpZdPm3jz329/6tn7Xj1PFxcWfu+tz8+bPGxkZaU+1//7538vzs3B76tQpdiPV4489ztI//OEP/8Od/3DxxRfzmSdPmUxEMz84k533N2/e/N577xFRJpN57bVzOjwvv/zyyy+/fGho6Lvf/e7BAwf1dEmxV0y7ghX77DPPsgb99t9s5+PTzJkzWX/7osWLFi1epKePGTOmrKyM9fSaeu3V11566aWrr7664csNRGTa3y6pmO7tt99+5ZVXiOjQwUMs5YLJFwSzUe+9994TW5+gM3eGoqNuNMo97rpg2b0cixURZceNHcdavUVFRe+MFF82cGI4O+m9ocy084onjs3OOvRi8QWTPzBhzPjx42NFht40AGv3rrj36NGjxcXF3/7nb8+ePfvW227d8MCG48eP6xm+9tWvHT16VFiq5tYadj694847Fv/DYiJi59+PfvSj3f+vm50633rrLdYtXFJS8ne1f1f3mbqJEyded911j216zEU9p1w45WvNX7vqqqvefffd1T9a/dJLL9kuYlrzD1z2gcaljbFY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" alt="The BEAST2 package manager" />
-<p class="caption">The BEAST2 package manager</p>
+<div class="figcaption">The BEAST2 package manager</div>
 </div>
 <p>In this vignette, we will:</p>
 <ul>
@@ -337,108 +359,50 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <li>Verify the BEAST2 package is indeed installed</li>
 <li>Uninstall the BEAST2 package</li>
 </ul>
-<p>To do so, we’ll need to load <code>mauricer</code>. We’ll also load <code>testthat</code> for testing:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(mauricer)</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co">#&gt; Loading required package: beastier</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(testthat)</a></code></pre></div>
+<p>To do so, we’ll need to load <code>mauricer</code>. We’ll also load
+<code>testthat</code> for testing:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(mauricer)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(testthat)</span></code></pre></div>
 <p>To install BEAST2 packages, one needs</p>
 <ul>
 <li>an internet connection</li>
 <li>BEAST2 must be installed</li>
 </ul>
-<p>If there is no internet connection, or if BEAST2 is not installed, this vignette will be close to empty.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="cf">if</span> (<span class="op">!</span>curl<span class="op">::</span><span class="kw">has_internet</span>()) {</a>
-<a class="sourceLine" id="cb2-2" title="2">  <span class="kw">print</span>(<span class="st">&quot;No internet connection&quot;</span>)</a>
-<a class="sourceLine" id="cb2-3" title="3">}</a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="cf">if</span> (<span class="op">!</span>beastier<span class="op">::</span><span class="kw">is_beast2_installed</span>()) {</a>
-<a class="sourceLine" id="cb2-5" title="5">  <span class="kw">print</span>(<span class="st">&quot;No BEAST2 installed&quot;</span>)</a>
-<a class="sourceLine" id="cb2-6" title="6">}</a></code></pre></div>
+<p>If there is no internet connection, or if BEAST2 is not installed,
+this vignette will be close to empty.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span>curl<span class="sc">::</span><span class="fu">has_internet</span>()) {</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;No internet connection&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>}</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span>beastier<span class="sc">::</span><span class="fu">is_beast2_installed</span>()) {</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;No BEAST2 installed&quot;</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>}</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co">#&gt; [1] &quot;No BEAST2 installed&quot;</span></span></code></pre></div>
 </div>
 <div id="list-all-beast2-packages" class="section level2">
 <h2>List all BEAST2 packages</h2>
-<p>Use <code>get_beast2_pkg_names</code> to get a data frame with the name, version and install status of all BEAST2 packages:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="cf">if</span> (curl<span class="op">::</span><span class="kw">has_internet</span>() <span class="op">&amp;&amp;</span><span class="st"> </span>beastier<span class="op">::</span><span class="kw">is_beast2_installed</span>()) {</a>
-<a class="sourceLine" id="cb3-2" title="2">  beast2_packages &lt;-<span class="st"> </span><span class="kw">get_beast2_pkg_names</span>()</a>
-<a class="sourceLine" id="cb3-3" title="3">  knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(beast2_packages))</a>
-<a class="sourceLine" id="cb3-4" title="4">}</a></code></pre></div>
-<table>
-<colgroup>
-<col width="6%"></col>
-<col width="13%"></col>
-<col width="11%"></col>
-<col width="20%"></col>
-<col width="48%"></col>
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">name</th>
-<th align="left">installed_version</th>
-<th align="left">latest_version</th>
-<th align="left">dependencies</th>
-<th align="left">description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">BEAST</td>
-<td align="left">2.6.6</td>
-<td align="left">2.6.7</td>
-<td align="left"></td>
-<td align="left">BEAST package</td>
-</tr>
-<tr class="even">
-<td align="left">Babel</td>
-<td align="left">NA</td>
-<td align="left">0.3.2</td>
-<td align="left">BEASTLabs</td>
-<td align="left">BABEL = BEAST analysis backing effective linguistics</td>
-</tr>
-<tr class="odd">
-<td align="left">bacter</td>
-<td align="left">NA</td>
-<td align="left">2.2.5</td>
-<td align="left"></td>
-<td align="left">Bacterial ARG inference.</td>
-</tr>
-<tr class="even">
-<td align="left">BADTRIP</td>
-<td align="left">NA</td>
-<td align="left">1.0.0</td>
-<td align="left"></td>
-<td align="left">Infer transmission time for non-haplotype data and epi data</td>
-</tr>
-<tr class="odd">
-<td align="left">BASTA</td>
-<td align="left">NA</td>
-<td align="left">3.0.1</td>
-<td align="left"></td>
-<td align="left">Bayesian structured coalescent approximation</td>
-</tr>
-<tr class="even">
-<td align="left">bdmm</td>
-<td align="left">NA</td>
-<td align="left">1.0.2</td>
-<td align="left">MASTER, SA, MultiTypeTree</td>
-<td align="left">Multitype birth-death model (aka birth-death-migration model)</td>
-</tr>
-</tbody>
-</table>
+<p>Use <code>get_beast2_pkg_names</code> to get a data frame with the
+name, version and install status of all BEAST2 packages:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="cf">if</span> (curl<span class="sc">::</span><span class="fu">has_internet</span>() <span class="sc">&amp;&amp;</span> beastier<span class="sc">::</span><span class="fu">is_beast2_installed</span>()) {</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  beast2_packages <span class="ot">&lt;-</span> <span class="fu">get_beast2_pkg_names</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(beast2_packages))</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="install-the-first-non-installed-beast2-package" class="section level2">
 <h2>Install the first non-installed BEAST2 package</h2>
 <p>Find a package that is not installed:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="cf">if</span> (curl<span class="op">::</span><span class="kw">has_internet</span>() <span class="op">&amp;&amp;</span><span class="st"> </span>beastier<span class="op">::</span><span class="kw">is_beast2_installed</span>()) {</a>
-<a class="sourceLine" id="cb4-2" title="2">  package_name &lt;-<span class="st"> </span>beast2_packages[</a>
-<a class="sourceLine" id="cb4-3" title="3">    beast2_packages<span class="op">$</span>installed_version <span class="op">==</span><span class="st"> &quot;NA&quot;</span>,</a>
-<a class="sourceLine" id="cb4-4" title="4">  ]<span class="op">$</span>name[<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb4-5" title="5">  <span class="kw">print</span>(package_name)</a>
-<a class="sourceLine" id="cb4-6" title="6">}</a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt; [1] &quot;Babel&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="cf">if</span> (curl<span class="sc">::</span><span class="fu">has_internet</span>() <span class="sc">&amp;&amp;</span> beastier<span class="sc">::</span><span class="fu">is_beast2_installed</span>()) {</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  package_name <span class="ot">&lt;-</span> beast2_packages[</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>    beast2_packages<span class="sc">$</span>installed_version <span class="sc">==</span> <span class="st">&quot;NA&quot;</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  ]<span class="sc">$</span>name[<span class="dv">1</span>]</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>  <span class="fu">print</span>(package_name)</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>}</span></code></pre></div>
 <p>Install that package:</p>
 <pre><code>if (curl::has_internet() &amp;&amp; beastier::is_beast2_installed()) {
   mauricerinstall::install_beast2_pkg(package_name)
 }</code></pre>
-<p>Note that this installation uses a non-CRAN package, called <code>mauricerinstall</code>, as installing software is against CRAN policy.</p>
+<p>Note that this installation uses a non-CRAN package, called
+<code>mauricerinstall</code>, as installing software is against CRAN
+policy.</p>
 </div>
 <div id="uninstall-the-beast2-package" class="section level2">
 <h2>Uninstall the BEAST2 package</h2>
@@ -446,7 +410,9 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <pre><code>if (curl::has_internet() &amp;&amp; beastier::is_beast2_installed()) {
   mauricerinstall::uninstall_beast2_pkg(package_name)
 }</code></pre>
-<p>Also this code uses a non-CRAN package, called <code>mauricerinstall</code>, as installing software is against CRAN policy.</p>
+<p>Also this code uses a non-CRAN package, called
+<code>mauricerinstall</code>, as installing software is against CRAN
+policy.</p>
 </div>
 
 
